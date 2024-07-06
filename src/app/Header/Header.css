@@ -1,0 +1,48 @@
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top : 20px;
+    position : fixed;
+    top : 0;
+    width : 80%;
+  }
+
+  /* Media query for mobile devices */
+@media (max-width: 1100px) {
+  .headerContent {
+    display:flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+
+    margin-bottom: 20px;
+    padding-top : 0px;
+  }
+}
+
+  .headerContent h1 {
+     font-size: 50px;
+     color : #CD3700;
+     font-family: 'Sofia';
+     font-family: "Raleway Dots", sans-serif;
+      font-weight: 900;
+      font-style: normal;
+  }
+
+  
+  .searchContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .searchContainer button {
+     margin-left: 10px;
+     background-color: transparent;
+     border: none;
+     padding: 0;
+     cursor:pointer;
+    
+  }
+  

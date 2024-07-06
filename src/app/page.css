@@ -1,0 +1,78 @@
+.header {
+  width: 100%;
+  text-align: center;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Card container */
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background-color:  rgba(211, 147, 147, 0.2);;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: perspective(1000px) translateZ(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.content {
+  background-image: url('/cloudy2.jpeg');
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  min-height: 100vh; /* Ensures the content takes up at least the full height of the viewport */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:20px;
+}
+
+.dataContainer {
+  display: flex;
+  width:80%;
+  justify-content: space-around;
+  text-align: center;
+}
+
+@media (max-width: 1100px){
+  .content {
+    padding: 10px;
+    padding-top: 180px; /* Adjust padding-top for mobile if needed */
+  }
+
+  .dataContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card{
+    padding-top : 20px;
+  }
+ 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

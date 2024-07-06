@@ -2,6 +2,7 @@
   "name": "weather-application",
   "version": "0.1.0",
   "private": true,
+  "type" : "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,11 +10,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "country-list": "^2.3.0",
+    "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/node": "20.14.9",
+    "@types/react": "18.3.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.4"
   }

@@ -1,0 +1,24 @@
+img {
+    height: 120px;
+    width: 120px;
+    align-items:flex-end;
+  }
+
+.divImgTemp{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.divImgTemp span{
+   font-size:xxx-large;
+   font-weight: 800;
+   color :#CD3700;
+}
+
+.Placediv{
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  padding-top: 10px;
+}
