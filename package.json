@@ -2,7 +2,7 @@
   "name": "weather-application",
   "version": "0.1.0",
   "private": true,
-  "type" : "module",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,9 +16,14 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
     "@types/node": "20.14.9",
     "@types/react": "18.3.3",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-define": "^2.1.4",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.4"
   }
 }

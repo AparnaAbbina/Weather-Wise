@@ -1,5 +1,4 @@
 import './Header.css';
-import { ChangeEvent, FormEvent } from 'react';
 import Search from '../Search/Search.tsx';
 
 export default function Header({ cityName, setInputValue, getData }) {

@@ -4,7 +4,7 @@ import Header from "./Header/Header.jsx";
 import WeatherData from "./WeatherData/WeatherData.jsx";
 import WeatherImg from "./WeatherImg/WeatherImg.jsx";
 import WeeklyWeather from "./WeeklyWeather/WeeklyWeather.jsx";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [cityName, setInputValue] = useState("");
@@ -17,43 +17,56 @@ export default function Home() {
   const [country, setCountry] = useState(null);
   const [timestamp, setTimestamp] = useState(null);
   const [weeklyData, setWeeklyData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(
+    "Please enter a city name or town name to get weather data."
+  );
 
   const getData = async (event) => {
     event.preventDefault();
-    const responseOne = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=08fbc45906472df0481f5f947284ab12`
-    );
-    const dataOne = await responseOne.json();
-    console.log(dataOne);
-    setData(dataOne.main.temp);
-    setCloud(dataOne.weather[0].description);
-    setHumidity(dataOne.main.humidity);
-    setWindspeed(dataOne.wind.speed);
-    setCountry(dataOne.sys.country);
-    setTimestamp(dataOne.dt);
-    setName(dataOne.name);
-    const image = `http://openweathermap.org/img/wn/${dataOne.weather[0].icon}.png`;
-    setWeatherImage(image);
+    const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+    if (cityName) {
+      try {
+        // Fetch the current weather data for the Cityname/townname searched by user
+        const responseOne = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`
+        );
 
-    const { lat, lon } = dataOne.coord;
+        if (!responseOne.ok) {
+          throw new Error("Failed to fetch current weather data");
+        }
 
-    // Fetch the one-week weather data
-    const responseTwo = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=08fbc45906472df0481f5f947284ab12`
-    );
-    const dataTwo = await responseTwo.json();
-    console.log(dataTwo);
-    // Extract daily weather data
-    setWeeklyData(dataTwo);
-  };
+        const dataOne = await responseOne.json();
 
-  const backgroundImage = {
-    backgroundImage: `url(/cloudy2.jpeg)`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    height: "100vh",
-    width: "100vw",
+        setData(dataOne.main.temp);
+        setCloud(dataOne.weather[0].description);
+        setHumidity(dataOne.main.humidity);
+        setWindspeed(dataOne.wind.speed);
+        setCountry(dataOne.sys.country);
+        setTimestamp(dataOne.dt);
+        setName(dataOne.name);
+        const image = `http://openweathermap.org/img/wn/${dataOne.weather[0].icon}.png`;
+        setWeatherImage(image);
+
+        const { lat, lon } = dataOne.coord;
+
+        // Fetch the one-week weather data
+        const responseTwo = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+        );
+
+        if (!responseTwo.ok) {
+          throw new Error("Failed to fetch weekly weather data");
+        }
+
+        const dataTwo = await responseTwo.json();
+        setWeeklyData(dataTwo);
+        setErrorMessage("");
+      } catch (error) {
+        setErrorMessage(error.message);
+      }
+    } else {
+      setErrorMessage("Please enter a valid City name or Town name");
+    }
   };
 
   return (
@@ -63,25 +76,31 @@ export default function Home() {
         setInputValue={setInputValue}
         getData={getData}
       />
-      <div className="dataContainer">
-        <div className="card">
-          <WeatherImg
-            image={weatherImage}
-            temp={data}
-            placename={placename}
-            country={country}
-          />
-          <WeatherData
-            cloud={cloud}
-            humidity={humidity}
-            windspeed={windspeed}
-            timestamp={timestamp}
-          />
-          <div className="weeklyContainer">
-            <WeeklyWeather weeklyData={weeklyData} />
+      {errorMessage ? (
+        <div className="error-message">
+          <b>{errorMessage}</b>
+        </div>
+      ) : (
+        <div className="dataContainer">
+          <div className="card">
+            <WeatherImg
+              image={weatherImage}
+              temp={data}
+              placename={placename}
+              country={country}
+            />
+            <WeatherData
+              cloud={cloud}
+              humidity={humidity}
+              windspeed={windspeed}
+              timestamp={timestamp}
+            />
+            <div className="weeklyContainer">
+              <WeeklyWeather weeklyData={weeklyData} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </main>
   );
 }
