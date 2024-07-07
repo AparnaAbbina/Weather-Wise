@@ -42,7 +42,7 @@ To run this project locally, you need to have Node.js and npm installed on your 
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/yourusername/weather-application.git
+   git clone https://github.com/AparnaAbbina/weather-application.git
    cd weather-application
 
 2. Install dependencies:
