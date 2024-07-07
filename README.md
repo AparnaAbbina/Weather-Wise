@@ -1,13 +1,13 @@
 
 ## Getting Started
 
-# 🌦️ Weather Application
+# 🌦️ WeatherWise Application
 
-Welcome to my Weather Application! This project is a personal endeavor to create a user-friendly and dynamic weather forecasting tool using React, Next.js, and the OpenWeatherMap API. Below, you will find all the details about the project, its features, and how to set it up.
+Welcome to my WeatherWise Application! This project is a personal endeavor to create a user-friendly and dynamic weather forecasting tool using React, Next.js, and the OpenWeatherMap API. Below, you will find all the details about the project, its features, and how to set it up.
 
 ## 📋 Project Overview
 
-The Weather Application allows users to view the current weather conditions and a 5-day forecast for any city or town. The application provides real-time data on temperature, humidity, wind speed, and overall weather conditions.
+This WeatherWise Application allows users to view the current weather conditions and a 5-day forecast for any city or town. The application provides real-time data on temperature, humidity, wind speed, and overall weather conditions.
 
 ## 🌟 Features
 
